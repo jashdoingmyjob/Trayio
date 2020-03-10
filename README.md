@@ -25,4 +25,4 @@ There are two functions in this program `extract_parameters_from_file()` and `cl
    
    - clean_up(): The function starts by creating a set of the dirt_loc values which takes O(n) time (the reason I create a set is to allow for O(1) look up times later in the function). Then there is a `for` loop which loops through each char of the instructions string which takes O(M) time as well. Within this `for` loop we have an `if-statement` at the very end that checks if the current position exists in the set of dirt pile locations *which takes O(1) time* since I created a set earlier in the function (had it been a list, we would have had O(n)). Our *overall runtime is O(n) + O(M) = O(n+M) which is still linear runtime*. 
 
-**Overall, we have time complexity of O(n+m) which is linear runtime.
+**Overall, we have time complexity of O(n+m) which is linear runtime.**
