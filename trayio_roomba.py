@@ -8,13 +8,12 @@
 
 # RETURN VAL:
 # JSON
+
 def clean_up(dimensions, start, dirt_loc, instructions):
     clean_up_count = 0
     current_pos = start
     # create set of dirt_loc because better time complexity O(1)
     set_dirt_loc = set(tuple(i) for i in dirt_loc)
-    if dimensions[0] < 0 or dimensions[1] < 0:
-        return {"Invalid dimensions. Dimensions must be positive": dimensions}
     for move in instructions:
         if move == 'N' and current_pos[1] < dimensions[1]-1:
             current_pos[1] += 1
@@ -45,6 +44,8 @@ def extract_parameters_from_file(file):
     param.remove(start_loc)
     param.remove(instructions)
 
+    if '-' in dimen:
+        raise ValueError('Negative dimensions not allowed')
     dimen_list = [int(dimen[0]), int(dimen[2])]
     start_loc_list = [int(start_loc[0]), int(start_loc[2])]
     dirt_loc = param
