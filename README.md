@@ -9,7 +9,9 @@ The robotic hoover program was developed using Python, so you can run the follow
 This will run the program and use the `input.txt` file that exists in the same directory as an input. 
 
 ## Unit Testing
-I've also included a file called `trayio_roomba_test.py` which serves as my personal unit test for the program. As clean coding convention, I created the unit tests prior to developing the program (Test Driven Development).
+I've also included a file called `trayio_roomba_test.py` which serves as my personal unit test for the program. As clean coding convention, I created the unit tests prior to developing the program (Test Driven Development). To run the unit test:                                                                                  ```
+       python trayio_roomba_test.py
+       ```
 
 ## Output
 The output will be printed out to terminal in the same format as the instructions indicated.
