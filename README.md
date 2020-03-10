@@ -2,7 +2,7 @@
 Take home assignment Part 1: Robotic Hoover
 
 ## How to run
-The robotic hoover program was developed using Python, so you can run the following CLI in terminal:
+The robotic hoover program was developed using Python, so you can run the following CLI in terminal: \n
 	```
 	python trayio_roomba.py
 	```
