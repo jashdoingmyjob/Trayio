@@ -14,7 +14,7 @@ I've also included a file called `trayio_roomba_test.py` which serves as my pers
 ## Output
 The output will be printed out to terminal in the same format as the instructions indicated, i.e									
 	```
-	1 3										
+	1 3\							
 	1
 	```
 
