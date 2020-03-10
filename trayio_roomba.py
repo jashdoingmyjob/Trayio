@@ -16,11 +16,11 @@ def clean_up(dimensions, start, dirt_loc, instructions):
     if dimensions[0] < 0 or dimensions[1] < 0:
         return {"Invalid dimensions. Dimensions must be positive": dimensions}
     for move in instructions:
-        if move == 'N' and current_pos[1] < dimensions[1]:
+        if move == 'N' and current_pos[1] < dimensions[1]-1:
             current_pos[1] += 1
         elif move == 'S' and current_pos[1] > 0:
             current_pos[1] -= 1
-        elif move == 'E' and current_pos[0] < dimensions[0]:
+        elif move == 'E' and current_pos[0] < dimensions[0]-1:
             current_pos[0] += 1
         elif move == 'W' and current_pos[0] > 0:
             current_pos[0] -= 1
@@ -61,6 +61,7 @@ def extract_parameters_from_file(file):
 
 if __name__ == "__main__":
     param_json = extract_parameters_from_file('input.txt')
-    print(clean_up(param_json['dimen'], param_json['start_loc'],
-          param_json['dirt_loc'], param_json['instruct']))
-    # print(clean_up([5, 5], [1, 2], [[1, 0], [2, 2], [2, 3]], "NNESEESWNWW"))
+    res_json = clean_up(param_json['dimen'], param_json['start_loc'],
+                        param_json['dirt_loc'], param_json['instruct'])
+    print(res_json['final hoover position'])
+    print(res_json['patches of dirt cleaned'])
