@@ -8,6 +8,9 @@ class TestCleanUpFunc(unittest.TestCase):
         self.assertEqual(clean_up([5, 5], [1, 2], [(1, 0), (2, 2), (2, 3)], "NNESEESWNWW")['final hoover position'], '1 3')
         self.assertEqual(clean_up([5, 5], [1, 2], [(1, 0), (2, 2), (2, 3)], "NNESEESWNWW")['patches of dirt cleaned'], 1)
 
+    def test_bad_instruction(self):
+        self.assertEqual(clean_up([5, 5], [1, 2], [(1, 0), (2, 2), (2, 3)], "NNZESEESWNWW")['final hoover position'], '1 3')
+        self.assertEqual(clean_up([5, 5], [1, 2], [(1, 0), (2, 2), (2, 3)], "NNZESEESWNWW")['patches of dirt cleaned'], 1)
 
 class TestExtractFunc(unittest.TestCase):
     def test_negative_x_dim(self):
