@@ -8,11 +8,10 @@
 
 # RETURN VAL:
 # JSON
-
 def clean_up(dimensions, start, dirt_loc, instructions):
     clean_up_count = 0
     current_pos = start
-    # create set of dirt_loc because better time complexity O(1)
+    # create set of dirt_loc because better time complexity O(1) for lookups
     set_dirt_loc = set(tuple(i) for i in dirt_loc)
     for move in instructions:
         move = move.lower()
@@ -25,8 +24,7 @@ def clean_up(dimensions, start, dirt_loc, instructions):
         elif move == 'w' and current_pos[0] > 0:
             current_pos[0] -= 1
         # check if the current position has a dirt pile
-        # by checking if the location exists in the dirt_loc
-        # array
+        # by checking if the location exists in the set set_dirt_loc
         if tuple(current_pos) in set_dirt_loc:
             set_dirt_loc.remove(tuple(current_pos))
             clean_up_count += 1
@@ -35,6 +33,11 @@ def clean_up(dimensions, start, dirt_loc, instructions):
             str(current_pos[1]), "patches of dirt cleaned": clean_up_count}
 
 
+# INPUTS:
+# file = input.txt file that contains Roomba cleaning info
+
+# RET VAL:
+# JSON
 def extract_parameters_from_file(file):
     f = open(file, "r")
     param = f.readlines()
@@ -56,7 +59,6 @@ def extract_parameters_from_file(file):
     for i in dirt_loc:
         coord = i.strip()
         dirt_loc_list.append((int(coord[0]), int(coord[2])))
-    # print(start_loc_list)
     return {'dimen': dimen_list, 'start_loc': start_loc_list,
             'dirt_loc': dirt_loc_list, 'instruct': instructions}
 
