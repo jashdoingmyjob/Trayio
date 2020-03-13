@@ -1,5 +1,5 @@
 # Trayio
-Take home assignment Part 1: Robotic Hoover
+Take home assignment Part 1: Robotic Hoover. Be sure to be in the `Part1` subdirectory before running these commands.
 
 ## How to run
 The robotic hoover program was developed using Python, so you can run the following CLI in terminal:                          						
