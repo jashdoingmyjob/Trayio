@@ -15,13 +15,14 @@ def clean_up(dimensions, start, dirt_loc, instructions):
     # create set of dirt_loc because better time complexity O(1)
     set_dirt_loc = set(tuple(i) for i in dirt_loc)
     for move in instructions:
-        if move == 'N' and current_pos[1] < dimensions[1]-1:
+        move = move.lower()
+        if move == 'n' and current_pos[1] < dimensions[1]-1:
             current_pos[1] += 1
-        elif move == 'S' and current_pos[1] > 0:
+        elif move == 's' and current_pos[1] > 0:
             current_pos[1] -= 1
-        elif move == 'E' and current_pos[0] < dimensions[0]-1:
+        elif move == 'e' and current_pos[0] < dimensions[0]-1:
             current_pos[0] += 1
-        elif move == 'W' and current_pos[0] > 0:
+        elif move == 'w' and current_pos[0] > 0:
             current_pos[0] -= 1
         # check if the current position has a dirt pile
         # by checking if the location exists in the dirt_loc
