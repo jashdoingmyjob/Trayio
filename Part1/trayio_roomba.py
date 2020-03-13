@@ -3,6 +3,25 @@ class Roomba():
 
     # INPUTS:
     # dimensions = array consisting of x, y pair
+    # direction = char from instructions from clean_up function
+    # current_pos = array roomba's current x, y location from clean_up func
+
+    # RETURN VAL:
+    # array
+    def move_roomba(self, direction, current_pos, dimensions):
+        if direction == 'n' and current_pos[1] < dimensions[1]-1:
+            current_pos[1] += 1
+        elif direction == 's' and current_pos[1] > 0:
+            current_pos[1] -= 1
+        elif direction == 'e' and current_pos[0] < dimensions[0]-1:
+            current_pos[0] += 1
+        elif direction == 'w' and current_pos[0] > 0:
+            current_pos[0] -= 1
+
+        return current_pos
+
+    # INPUTS:
+    # dimensions = array consisting of x, y pair
     # start = array consisting of starting x, y dirt_loc
     # dirt_loc = array of x,y tuples that describe where dirt is
     # instructions = conncatenated string of driving instructions "NNWE..."
@@ -12,18 +31,10 @@ class Roomba():
     def clean_up(self, dimensions, start, dirt_loc, instructions):
         clean_up_count = 0
         current_pos = start
-        # create set of dirt_loc because better time complexity O(1) for lookups
+        # create set of dirt_loc bc better time complexity O(1) for lookups
         set_dirt_loc = set(tuple(i) for i in dirt_loc)
-        for move in instructions:
-            move = move.lower()
-            if move == 'n' and current_pos[1] < dimensions[1]-1:
-                current_pos[1] += 1
-            elif move == 's' and current_pos[1] > 0:
-                current_pos[1] -= 1
-            elif move == 'e' and current_pos[0] < dimensions[0]-1:
-                current_pos[0] += 1
-            elif move == 'w' and current_pos[0] > 0:
-                current_pos[0] -= 1
+        for direction in instructions:
+            current_pos = self.move_roomba(direction.lower(), current_pos, dimensions)
             # check if the current position has a dirt pile
             # by checking if the location exists in the set set_dirt_loc
             if tuple(current_pos) in set_dirt_loc:
@@ -32,7 +43,6 @@ class Roomba():
 
         return {"final hoover position": str(current_pos[0])+" " +
                 str(current_pos[1]), "patches of dirt cleaned": clean_up_count}
-
 
     # INPUTS:
     # file = input.txt file that contains Roomba cleaning info
@@ -68,6 +78,6 @@ if __name__ == "__main__":
     roomba = Roomba()
     param_json = roomba.extract_parameters_from_file('input.txt')
     res_json = roomba.clean_up(param_json['dimen'], param_json['start_loc'],
-                        param_json['dirt_loc'], param_json['instruct'])
+                               param_json['dirt_loc'], param_json['instruct'])
     print(res_json['final hoover position'])
     print(res_json['patches of dirt cleaned'])
