@@ -1,8 +1,8 @@
 # Trayio
-Take home assignment Part 1: Robotic Hoover. Be sure to be in the `Part1` subdirectory before running these commands.
+Take home assignment Part 1: Robotic Hoover. 
 
 ## How to run
-The robotic hoover program was developed using Python, so you can run the following CLI in terminal:                          						
+First, open terminal and ```git clone https://github.com/jashdoingmyjob/Trayio/``` in your desired directory to clone this repository. Be sure to be in the `Part1` subdirectory before running these commands. The robotic hoover program was developed using Python, so you can run the following CLI in terminal:                          						
 	```
 	python trayio_roomba.py
 	```										
@@ -14,7 +14,7 @@ I've also included a file called `trayio_roomba_test.py` which serves as my pers
        ```
 
 ## Output
-The output will be printed out to terminal in the same format as the instructions indicated.
+The output will be printed out to terminal in the same format as the instructions indicated. The first line represents the final position (x, y) of the Roomba upon completion. The second line represents how many dirt piles it cleaned up. 
 
 
 ## Runtime Complexity
@@ -28,4 +28,4 @@ There are two functions in this program `extract_parameters_from_file()` and `cl
 **Overall, we have time complexity of O(n+m) which is linear runtime.**
 
 ## Edge Cases ##
-In case the dimensions include negative values, we raise a `ValueError` which terminates the program. In case the robot drive instructions include a value otherthan 'N', 'S', 'E,' or 'W', the program will skip that instruction **and continue to the next instruction**. 
+In case the dimensions include negative values, we raise a `ValueError` which terminates the program. In case the robot drive instructions include a value otherthan 'N', 'S', 'E,' or 'W', the program will skip that instruction **and continue to the next instruction**. In case any of the inputted dirt locations had negative x and/or y values, no special behavior was necessary to add as the Roomba doesn't care about the sign of the values— it just checks if the current location exists in the set of all dirt piles. 
